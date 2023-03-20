@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+}
+
+#vote-tracker {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px;
+    border: thin solid red;
+    align-self: center;
+    justify-self: center;
+    width: 1200px;
+}
+
+img {
+    height: 100%;
+    margin: 0 20px;
+  }
