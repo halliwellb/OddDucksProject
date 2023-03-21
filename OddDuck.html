@@ -8,6 +8,7 @@
     <link rel="resetsheet" href="reset.css">
     <link rel="stylesheet" href="OddDuck.css">
     <title>Odd Duck Projects</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,17 @@
             <img>
             <img>
         </section>
-        <section id="results"></section>
+        <section id="data">
+            <div id="results">
+                <h2>Results!</h2>
+                <button id="results-button">View results</button>
+                <ul id="results-list">
+                </ul>
+            </div>
+            <section id="chartButton">
+                <canvas id="myChart" width="500" height="500"></canvas>
+            </section>
+        </section>
     </main>
     <script src="OddDuck.js"></script>
 </body>
