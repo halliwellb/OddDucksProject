@@ -19,5 +19,6 @@ h1 {
 
 img {
     height: 100%;
-    margin: 0 20px;
+    align-self: center;
+    justify-self: center;
   }

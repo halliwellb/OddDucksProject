@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 const state = [];
 
@@ -11,25 +11,25 @@ function Image(name, source) {
     this.source = source;
 }
 
-state.push(new Image('bag', '/assets/bag.jpg'));
-state.push(new Image('banana', '/assets/banana.jpg'));
-state.push(new Image('bathroom', '/assets/bathroom.jpg'));
-state.push(new Image('boots', '/assets/boots.jpg'));
-state.push(new Image('breakfast', '/assets/breakfast.jpg'));
-state.push(new Image('bubblegum', '/assets/bubblegum.jpg'));
-state.push(new Image('chair', '/assets/chair.jpg'));
-state.push(new Image('cthulhu', '/assets/cthulhu.jpg'));
-state.push(new Image('dog-duck', '/assets/dog-duck.jpg'));
-state.push(new Image('dragon', '/assets/dragon.jpg'));
-state.push(new Image('pen', '/assets/pen.jpg'));
-state.push(new Image('pet-sweep', '/assets/pet-sweep.jpg'));
-state.push(new Image('scissors', '/assets/scissors.jpg'));
-state.push(new Image('shark', '/assets/shark.jpg'));
-state.push(new Image('sweep', '/assets/sweep.png'));
-state.push(new Image('tauntaun', '/assets/tauntaun.jpg'));
-state.push(new Image('unicorn', '/assets/unicorn.jpg'));
-state.push(new Image('water-can', '/assets/water-can.jpg'));
-state.push(new Image('wine-glass', '/assets/wine-glass.jpg'));
+state.push(new Image('bag', 'assets/bag.jpg'));
+state.push(new Image('banana', 'assets/banana.jpg'));
+state.push(new Image('bathroom', 'assets/bathroom.jpg'));
+state.push(new Image('boots', 'assets/boots.jpg'));
+state.push(new Image('breakfast', 'assets/breakfast.jpg'));
+state.push(new Image('bubblegum', 'assets/bubblegum.jpg'));
+state.push(new Image('chair', 'assets/chair.jpg'));
+state.push(new Image('cthulhu', 'assets/cthulhu.jpg'));
+state.push(new Image('dog-duck', 'assets/dog-duck.jpg'));
+state.push(new Image('dragon', 'assets/dragon.jpg'));
+state.push(new Image('pen', 'assets/pen.jpg'));
+state.push(new Image('pet-sweep', 'assets/pet-sweep.jpg'));
+state.push(new Image('scissors', 'assets/scissors.jpg'));
+state.push(new Image('shark', 'assets/shark.jpg'));
+state.push(new Image('sweep', 'assets/sweep.png'));
+state.push(new Image('tauntaun', 'assets/tauntaun.jpg'));
+state.push(new Image('unicorn', 'assets/unicorn.jpg'));
+state.push(new Image('water-can', 'assets/water-can.jpg'));
+state.push(new Image('wine-glass', 'assets/wine-glass.jpg'));
 
 let imgEls = document.querySelectorAll('img');
 let voteTrackerEl = document.getElementById('vote-tracker');
