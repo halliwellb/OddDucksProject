@@ -1,7 +1,7 @@
 'use strict';
 
 let state = [];
-let roundsOfVoting = 5;
+let roundsOfVoting = 25;
 if (localStorage.getItem('VotingTracker')) {
     roundsOfVoting = localStorage.getItem('VotingTracker');
 }
@@ -107,8 +107,6 @@ function handleProductClick(event) {
     console.log('Votes left to cast!', roundsOfVoting);
     writeData('VotingTracker', roundsOfVoting);
 };
-
-// };
 
 voteTrackerEl.addEventListener('click', handleProductClick);
 
