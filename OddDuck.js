@@ -1,8 +1,22 @@
 'use strict';
 
-const state = [];
-let roundsOfVoting = 25;
+let state = [];
+let roundsOfVoting = 5;
+if (localStorage.getItem('VotingTracker')) {
+    roundsOfVoting = localStorage.getItem('VotingTracker');
+}
+
 let chartObj = null;
+let uniqueIndexValues = [];
+
+function writeData (key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function readData (key) {
+    let dataStores = JSON.parse(window.localStorage.getItem(key));
+    return dataStores;
+}
 
 function Image(name, source) {
     this.name = name;
@@ -11,6 +25,9 @@ function Image(name, source) {
     this.source = source;
 }
 
+if (localStorage.getItem('ShownTrackingData')) {
+    state = JSON.parse(localStorage.getItem('ShownTrackingData'));
+} else {
 state.push(new Image('Bag', 'assets/bag.jpg'));
 state.push(new Image('Banana', 'assets/banana.jpg'));
 state.push(new Image('Bathroom', 'assets/bathroom.jpg'));
@@ -30,6 +47,7 @@ state.push(new Image('Tauntaun', 'assets/tauntaun.jpg'));
 state.push(new Image('Unicorn', 'assets/unicorn.jpg'));
 state.push(new Image('Water-can', 'assets/water-can.jpg'));
 state.push(new Image('Wine-glass', 'assets/wine-glass.jpg'));
+};
 
 let imgEls = document.querySelectorAll('img');
 let voteTrackerEl = document.getElementById('vote-tracker');
@@ -38,7 +56,6 @@ function generateRandomProduct() {
     return Math.floor(Math.random() * state.length);
 }
 
-let uniqueIndexValues = [];
 // loading up a line of 6 indexed spots; pulling the first three, and setting the next three 'on deck'
 function renderProducts() {
     while (uniqueIndexValues.length < 6) {
@@ -67,6 +84,7 @@ function renderProducts() {
     imgEls[2].src = product3.source;
     imgEls[2].id = product3.name;
     product3.timesShown += 1;
+    writeData('ShownTrackingData', state);
 }
 
 function handleProductClick(event) {
@@ -76,38 +94,37 @@ function handleProductClick(event) {
             image.timesClicked += 1;
         }
     });
-
-    if (roundsOfVoting) {
+        if (roundsOfVoting) {
         renderProducts();
         roundsOfVoting--;
-    } else {
+        } else {
         voteTrackerEl.removeEventListener('click', handleProductClick);
+        alert('No more votes available! Showing results:');
         chartObj = drawChart();
-        let buttonEl = document.getElementById('results-button');
-        buttonEl.addEventListener('click', renderData);
-        alert('No more votes available!');
-    };
+        localStorage.clear();
+        roundsOfVoting = 5;
+        };
+    console.log('Votes left to cast!', roundsOfVoting);
+    writeData('VotingTracker', roundsOfVoting);
 };
+
+// };
 
 voteTrackerEl.addEventListener('click', handleProductClick);
 
 renderProducts();
 
-function renderData(event) {
-    state.forEach(image => {
-        let listItemEl = document.createElement('li');
-        let parentContainer = document.getElementById('results-list');
-        parentContainer.appendChild(listItemEl);
-        listItemEl.innerHTML = `Product: ${image.name} had ${image.timesClicked} votes and was shown ${image.timesShown} times.`;
-        image.timesClicked;
-        image.timesShown;
-        document.getElementById("results-button").disabled = true;
-    });
-};
-
-function compareDataPointYAscend(dataPoint1, dataPoint2) {
-    return dataPoint1.y - dataPoint2.y;
-}
+// function renderData(event) {
+//     state.forEach(image => {
+//         let listItemEl = document.createElement('li');
+//         let parentContainer = document.getElementById('results-list');
+//         parentContainer.appendChild(listItemEl);
+//         listItemEl.innerHTML = `Product: ${image.name} had ${image.timesClicked} votes and was shown ${image.timesShown} times.`;
+//         image.timesClicked;
+//         image.timesShown;
+//         document.getElementById("results-button").disabled = true;
+//     });
+// };
 
 const canvasEl = document.getElementById('myChart');
 
@@ -143,6 +160,4 @@ function drawChart() {
             }
         }
     });
-};
-
-canvasEl.options.data[0].dataPoints.sort(compareDataPointYAscend);
+}
