@@ -102,7 +102,7 @@ function handleProductClick(event) {
         alert('No more votes available! Showing results:');
         chartObj = drawChart();
         localStorage.clear();
-        roundsOfVoting = 5;
+        roundsOfVoting = 25;
         };
     console.log('Votes left to cast!', roundsOfVoting);
     writeData('VotingTracker', roundsOfVoting);
